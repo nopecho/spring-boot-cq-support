@@ -1,0 +1,32 @@
+plugins {
+    id "java-library"
+    id "org.springframework.boot" version "${springBootVersion}" apply false
+    id "io.spring.dependency-management" version "${springDependencyVersion}" apply false
+}
+
+java {
+    sourceCompatibility = "${javaVersion}"
+    targetCompatibility = "${javaVersion}"
+}
+
+allprojects {
+    group = "nopecho"
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+
+    apply {
+        plugin "java-library"
+    }
+
+    dependencies {
+        testImplementation "org.assertj:assertj-core:${assertjVersion}"
+        testImplementation platform("org.junit:junit-bom:${junitBomVersion}")
+        testImplementation "org.junit.jupiter:junit-jupiter"
+    }
+
+    tasks.named('test') {
+        useJUnitPlatform()
+    }
+}
