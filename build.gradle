@@ -1,7 +1,8 @@
 plugins {
     id "java-library"
-    id "org.springframework.boot" version "${springBootVersion}" apply false
-    id "io.spring.dependency-management" version "${springDependencyVersion}" apply false
+    id "org.jetbrains.kotlin.jvm" version "${kotlinVersion}"
+    id "org.springframework.boot" version "${springBootVersion}"
+    id "io.spring.dependency-management" version "${springDependencyVersion}"
 }
 
 java {
@@ -9,24 +10,26 @@ java {
     targetCompatibility = "${javaVersion}"
 }
 
-allprojects {
-    group = "nopecho"
-    repositories {
-        mavenCentral()
-        gradlePluginPortal()
-    }
+group = "com.github.nopecho"
 
-    apply {
-        plugin "java-library"
-    }
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+}
 
-    dependencies {
-        testImplementation "org.assertj:assertj-core:${assertjVersion}"
-        testImplementation platform("org.junit:junit-bom:${junitBomVersion}")
-        testImplementation "org.junit.jupiter:junit-jupiter"
-    }
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter"
 
-    tasks.named('test') {
-        useJUnitPlatform()
-    }
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation "org.assertj:assertj-core:${assertjVersion}"
+    testImplementation platform("org.junit:junit-bom:${junitBomVersion}")
+    testImplementation "org.junit.jupiter:junit-jupiter"
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+bootJar {
+    enabled = false
 }
