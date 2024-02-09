@@ -7,13 +7,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Query handlers annotation
+ * Query dispatch annotation
  * <p>
- * used to mark classes that contain query handlers
+ * used to mark classes that contain query dispatch
  * <p>
- * AutoConfiguration will scan for classes annotated with this annotation and register them as query handlers
+ * AutoConfiguration will scan for classes annotated with this annotation and register them as query dispatch
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface QueryHandlers {
+public @interface QueryDispatch {
 }
