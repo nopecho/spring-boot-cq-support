@@ -11,7 +11,7 @@ public class CommandDispatcher {
         this.handlers = handlers;
     }
 
-    public <T> T dispatch(Command command, Class<T> returnType) {
+    public <R> R dispatch(Command command, Class<R> returnType) {
         CommandHandler<?> commandHandler = handlers.stream()
                 .filter(handler -> handler.canHandle(command))
                 .findFirst()
@@ -19,5 +19,10 @@ public class CommandDispatcher {
 
         Object result = commandHandler.handle(command);
         return returnType.cast(result);
+    }
+
+    public boolean isSupported(Command command) {
+        return handlers.stream()
+                .anyMatch(handler -> handler.canHandle(command));
     }
 }

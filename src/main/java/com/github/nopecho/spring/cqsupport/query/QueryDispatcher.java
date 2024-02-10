@@ -20,4 +20,9 @@ public class QueryDispatcher {
         Object result = queryHandler.handle(query);
         return returnType.cast(result);
     }
+
+    public boolean isSupported(Query query) {
+        return handlers.stream()
+                .anyMatch(handler -> handler.canHandle(query));
+    }
 }
