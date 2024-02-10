@@ -46,6 +46,6 @@ class CommandDispatcherAutoConfigurationTest {
 
         boolean actual = sut.isSupported(command);
 
-        assertThat(actual).isTrue();
+        assertThat(actual).isFalse();
     }
 }
