@@ -1,6 +1,6 @@
 # Spring Boot C/Q Support
 
-[![Release](https://jitpack.io/v/User/Repo.svg)](https://jitpack.io/#User/Repo)
+[![](https://jitpack.io/v/nopecho/spring-boot-cq-support.svg)](https://jitpack.io/#nopecho/spring-boot-cq-support)
 
 ## Getting Started
 
