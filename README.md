@@ -12,7 +12,7 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 dependencies {
-    implementation 'com.github.nopecho:spring-boot-cq-support:0.0.1'
+    implementation 'com.github.nopecho:spring-boot-cq-support:0.0.2'
 }
 ```
 
