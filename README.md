@@ -5,6 +5,8 @@
 ## Getting Started
 
 ```groovy
+// build.gradle
+
 repositories {
     mavenCentral()
     maven { url "https://jitpack.io" }
