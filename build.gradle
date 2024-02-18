@@ -2,8 +2,6 @@ plugins {
     id "java-library"
     id "maven-publish"
     id "org.jetbrains.kotlin.jvm" version "${kotlinVersion}"
-    id "org.springframework.boot" version "${springBootVersion}"
-    id "io.spring.dependency-management" version "${springDependencyVersion}"
 }
 
 java {
@@ -17,26 +15,23 @@ group = "com.github.nopecho"
 
 repositories {
     mavenCentral()
-    gradlePluginPortal()
+    maven { url 'https://jitpack.io' }
 }
 
 publishing {
     publications {
         maven(MavenPublication) {
-            artifactId = "${libraryName}"
-            version = "${libraryVersion}"
             from components.java
-            pom {
-                name = "${libraryName}"
-            }
         }
     }
 }
 
 dependencies {
-    implementation "org.springframework.boot:spring-boot-starter"
+    implementation "org.springframework.boot:spring-boot-starter-logging:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-autoconfigure:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot:${springBootVersion}"
 
-    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
     testImplementation "org.assertj:assertj-core:${assertjVersion}"
     testImplementation platform("org.junit:junit-bom:${junitBomVersion}")
     testImplementation "org.junit.jupiter:junit-jupiter"
@@ -44,8 +39,4 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
-}
-
-bootJar {
-    enabled = false
 }
