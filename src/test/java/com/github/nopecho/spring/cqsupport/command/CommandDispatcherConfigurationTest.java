@@ -14,19 +14,19 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest(classes = {
         TestComponentScanConfig.class,
         ApplicationContext.class,
-        CommandDispatcherAutoConfiguration.class
+        CommandDispatcherConfiguration.class
 })
-class CommandDispatcherAutoConfigurationTest {
+class CommandDispatcherConfigurationTest {
 
     @Autowired
-    private CommandDispatcherAutoConfiguration commandDispatcherAutoConfiguration;
+    private CommandDispatcherConfiguration commandDispatcherConfiguration;
 
     @Autowired
     private ApplicationContext applicationContext;
 
     @Test
     void assertNotNullCommandDispatcherAutoConfiguration() {
-        assertNotNull(commandDispatcherAutoConfiguration);
+        assertNotNull(commandDispatcherConfiguration);
     }
 
     @Test
