@@ -23,7 +23,12 @@ repositories {
 publishing {
     publications {
         maven(MavenPublication) {
+            artifactId = "${libraryName}"
+            version = "${libraryVersion}"
             from components.java
+            pom {
+                name = "${libraryName}"
+            }
         }
     }
 }
@@ -39,4 +44,8 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+bootJar {
+    enabled = false
 }
